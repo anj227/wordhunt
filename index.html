@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Hunt</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Word Hunt</h1>
+            <div class="header-buttons">
+                <button id="customGame" class="new-game-btn">Custom Puzzle</button>
+                <button id="showAnswers" class="new-game-btn">Show Answers</button>
+                <button id="newGame" class="new-game-btn">New Puzzle</button>
+            </div>
+        </header>
+
+        <div class="game-info">
+            <div class="score-section">
+                <div class="score">
+                    <span class="label">Score:</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="rank">
+                    <span id="rank">Beginner</span>
+                </div>
+            </div>
+            <div class="stats">
+                Target: <span id="wordCount">0</span>
+            </div>
+        </div>
+
+        <div class="message" id="message"></div>
+
+        <div class="letters-section">
+            <div class="center-letter-row">
+                <button class="letter-btn center" id="centerLetter"></button>
+            </div>
+            <hr class="letter-divider">
+            <div class="outer-letters-row">
+                <button class="letter-btn" data-index="0"></button>
+                <button class="letter-btn" data-index="1"></button>
+                <button class="letter-btn" data-index="2"></button>
+                <button class="letter-btn" data-index="3"></button>
+                <button class="letter-btn" data-index="4"></button>
+                <button class="letter-btn" data-index="5"></button>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <input type="text" id="wordInput" placeholder="Type or click letters" autocomplete="off">
+            <div class="button-group">
+                <button id="deleteBtn" class="control-btn">Delete</button>
+                <button id="shuffleBtn" class="control-btn">Shuffle</button>
+                <button id="submitBtn" class="submit-btn">Enter</button>
+            </div>
+        </div>
+
+        <div class="found-words">
+            <h3>Found Words (<span id="foundCount">0</span>)</h3>
+            <div id="wordList" class="word-list"></div>
+        </div>
+    </div>
+
+    <!-- Custom Puzzle Modal -->
+    <div id="customModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create Custom Puzzle</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="customLetters">Enter 7 unique letters:</label>
+                    <input type="text" id="customLetters" maxlength="7" placeholder="e.g., ABCDEFG" autocomplete="off">
+                    <small>Enter exactly 7 different letters</small>
+                </div>
+                <div class="form-group">
+                    <label for="centerLetterSelect">Select center (required) letter:</label>
+                    <select id="centerLetterSelect">
+                        <option value="">-- Choose center letter --</option>
+                    </select>
+                </div>
+                <div class="error-message" id="customError"></div>
+                <button id="startCustom" class="submit-btn">Start Puzzle</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Answers Modal -->
+    <div id="answersModal" class="modal">
+        <div class="modal-content answers-modal-content">
+            <div class="modal-header">
+                <h2>All Possible Words</h2>
+                <span class="close-answers">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="score-comparison">
+                    <div class="comparison-item">
+                        <span class="comparison-label">Your Score:</span>
+                        <span class="comparison-value" id="userScore">0</span>
+                    </div>
+                    <div class="comparison-item">
+                        <span class="comparison-label">Maximum Score:</span>
+                        <span class="comparison-value" id="maxScoreDisplay">0</span>
+                    </div>
+                    <div class="comparison-item percentage">
+                        <span class="comparison-label">Percentage:</span>
+                        <span class="comparison-value" id="percentageDisplay">0%</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="answers-section">
+                        <h3>Found Words (<span id="foundWordsCount">0</span>)</h3>
+                        <div id="foundWordsList" class="answers-list"></div>
+                    </div>
+                    <div class="answers-section missed-section">
+                        <h3>Missed Words (<span id="missedWordsCount">0</span>)</h3>
+                        <div id="missedWordsList" class="answers-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="words.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
